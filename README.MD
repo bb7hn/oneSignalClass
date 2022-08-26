@@ -48,3 +48,24 @@ You can browse oneSignalUsage.php for more
     print_r($response); 
 ?>
 ```
+# How Can I Create Custom Functions
+Here is an example code block. Basically you can edit this function and insert it end of class file.
+```php
+    public function myFunction($myParam = 'Default Value For Parameter'){
+        $service    = 'service';//this is service name. You can set it from url
+        /*
+            For Example If your url is :
+            https://onesignal.com/api/v1/notifications
+            service is notifications for you
+            You can find all valid services by browsing official documentation
+        */
+        $method     ='get';//Method GET OR POST
+        $fields = array(
+            "parameter" => $myParam
+        );
+        //You can set fields by browsing official documentation of One Signal
+        
+        return json_decode($this->curl('players',$fields,'get'));
+    }
+    //Here is official documentation URL : https://documentation.onesignal.com/reference/create-notification
+```
